@@ -10,7 +10,7 @@ function Products({ searchquery = "" }) {
     fetch("http://localhost:3000/products", {
       headers: {
         authorization:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkF5dXNoaSIsImVtYWlsIjoiYXl1QGdtYWlsLmNvbSIsImlhdCI6MTc4MDczOTgzNSwiZXhwIjoxNzgwNzQzNDM1fQ.cud_HTd6X2l8oyQJorELOX6c3mxs2MenI9lo0jn-wsM",
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkF5dXNoaSIsInJvbGUiOiJidXllciIsImlhdCI6MTc4MDc3MTAyMSwiZXhwIjoxNzgzMzYzMDIxfQ.lmhC-wRV1zdpoextltMok5ONj12kUnXkXtTPVreA3SY",
         location: "Bhubaneswar",
       },
     })
