@@ -105,7 +105,7 @@ exports.login = async (req, res) => {
         let token = jwt.sign(
             payload,
             secretkey,
-            { expiresIn: '1hr' }
+            { expiresIn: '30d' }
         );
 
         res.json({
