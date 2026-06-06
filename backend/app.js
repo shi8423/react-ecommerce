@@ -4,8 +4,8 @@ const express = require('express');
 const cors = require('cors');
 let connection = require('./config/db');
 const limiter = require('./middleware/ratelimit');
-let productRoutes = require('./routes/productRoutes');
-let authRoutes = require('./routes/authRoutes');
+let productRoutes = require('./routes/productroutes');
+let authRoutes = require('./routes/authroutes');
 
 const app = express();
 const port = process.env.PORT;
