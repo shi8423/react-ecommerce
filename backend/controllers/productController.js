@@ -28,10 +28,9 @@ exports.createProduct = async (req, res) => {
 };
 
 exports.bulkinsert = async (req, res) => {
-
     try {
 
-        await Product.insertMany([req.body]);
+        await Product.insertMany(req.body);
 
         res.json({
             msg: "products saved"
@@ -44,7 +43,6 @@ exports.bulkinsert = async (req, res) => {
         });
 
     }
-
 };
 
 exports.getProducts = async (req, res) => {
