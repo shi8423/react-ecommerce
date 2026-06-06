@@ -38,9 +38,13 @@ function Products({ searchquery = "" }) {
     p.title.toLowerCase().includes(searchquery.toLowerCase())
   );
 
-  return (
-    <div className="products">
+return (
+  <div>
+    <div className="heading">
       <h1>Total Products: {products.length}</h1>
+    </div>
+
+    <div className="products">
       {loading && <h2>Loading products...</h2>}
 
       {error && <h2>{error}</h2>}
@@ -58,7 +62,7 @@ function Products({ searchquery = "" }) {
         <h2>No products found</h2>
       )}
     </div>
-  );
-}
+  </div>
+);
 
 export default Products;
