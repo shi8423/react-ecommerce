@@ -7,7 +7,7 @@ function Products({ searchquery = "" }) {
   const [error, seterror] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:3000/products", {
+    fetch("https://backend-v4ql.onrender.com/products", {
       headers: {
         authorization:
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkF5dXNoaSIsInJvbGUiOiJidXllciIsImlhdCI6MTc4MDc3MTAyMSwiZXhwIjoxNzgzMzYzMDIxfQ.lmhC-wRV1zdpoextltMok5ONj12kUnXkXtTPVreA3SY",
@@ -40,21 +40,25 @@ function Products({ searchquery = "" }) {
 
 return (
   <div>
-    <div className="heading">
-      <h1>Total Products: {products.length}</h1>
-    </div>
+   <div className="products">
+  {loading && <h2>Loading products...</h2>}
 
-    <div className="products">
-      {loading && <h2>Loading products...</h2>}
+  {error && <h2>{error}</h2>}
 
-      {error && <h2>{error}</h2>}
+  {filteredproducts.map((e) => (
+    <Card
+      key={e._id}
+      image={e.image}
+      title={e.title}
+      price={e.price}
+    />
+  ))}
 
-                  {!loading && filteredproducts.length === 0 && !error && (
-        <h2>No products found</h2>
-      )}
-    </div>
-
-  </div>
+  {!loading && filteredproducts.length === 0 && !error && (
+    <h2>No products found</h2>
+  )}
+</div>
+</div>
 );
 }
 
