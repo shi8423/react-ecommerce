@@ -49,20 +49,13 @@ return (
 
       {error && <h2>{error}</h2>}
 
-      {filteredproducts.map((e) => (
-        <Card
-          key={e._id}
-          image={e.image}
-          title={e.title}
-          price={e.price}
-        />
-      ))}
-
-      {!loading && filteredproducts.length === 0 && !error && (
+                  {!loading && filteredproducts.length === 0 && !error && (
         <h2>No products found</h2>
       )}
     </div>
+
   </div>
 );
+}
 
 export default Products;
