@@ -10,7 +10,7 @@ function Products({ searchquery = "" }) {
     fetch("https://backend-v4ql.onrender.com/products", {
       headers: {
         authorization:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QxMjMiLCJyb2xlIjoiYnV5ZXIiLCJpYXQiOjE3ODA4NTIzODMsImV4cCI6MTc4MzQ0NDM4M30._3cNo6Y7Kjjm0cPM8ZxbMVa_y_FceEy7VeDIF1Fnin4",
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkF5dXNoaSIsInJvbGUiOiJidXllciIsImlhdCI6MTc4MDg2MjcyMywiZXhwIjoxNzgzNDU0NzIzfQ.y4_gBMu-wRIsd4oJ-9eaInREJjCw6lnVU9H6sye2kKo",
         location: "Bhubaneswar",
       },
     })
