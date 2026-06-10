@@ -9,13 +9,13 @@ function Products({ searchquery = "" }) {
   useEffect(() => {
 
   const token = localStorage.getItem("token");
-
+  
   fetch("https://backend-v4ql.onrender.com/products", {
     headers: {
-      authorization: token,
+      authorization: `Bearer ${token}`,
       location: "Bhubaneswar",
-    },
-  })
+  },
+})
       .then((res) => res.json())
       .then((data) => {
         console.log("API DATA:", data);
