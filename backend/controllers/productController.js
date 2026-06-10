@@ -62,7 +62,7 @@ msg: "invalid token"
     });
         // query parameters
         let maxlimit = req.query.limit;
-        let shipment = req.query.location;
+        let shipment = req.headers.location;
 
         // location from headers
         let currentlocation = req.headers.location;
