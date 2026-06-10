@@ -7,13 +7,15 @@ function Products({ searchquery = "" }) {
   const [error, seterror] = useState("");
 
   useEffect(() => {
-    fetch("https://backend-v4ql.onrender.com/products", {
-      headers: {
-        authorization:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkF5dXNoaSIsInJvbGUiOiJidXllciIsImlhdCI6MTc4MTA4ODU1MSwiZXhwIjoxNzgzNjgwNTUxfQ.1ZG-rZE5_JFKnZZ8pRj3Aiss9EW9KKSjb3kI3RqseVE",
-        location: "Bhubaneswar",
-      },
-    })
+
+  const token = localStorage.getItem("token");
+
+  fetch("https://backend-v4ql.onrender.com/products", {
+    headers: {
+      authorization: token,
+      location: "Bhubaneswar",
+    },
+  })
       .then((res) => res.json())
       .then((data) => {
         console.log("API DATA:", data);

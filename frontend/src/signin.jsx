@@ -19,19 +19,35 @@ function Signin() {
     e.preventDefault();
 
     try {
+
       let res = await axios.post(
         "https://backend-v4ql.onrender.com/auth/login",
         formdata
       );
 
-      alert(res.data.msg);
+      console.log(res.data);
 
       if (res.data.token) {
-        localStorage.setItem("token", res.data.token);
+
+        localStorage.setItem(
+          "token",
+          res.data.token
+        );
+
+        alert("Login Successful");
+
+      } else {
+
+        alert(res.data.msg);
+
       }
 
     } catch (error) {
+
+      console.log(error);
+
       alert("Login Failed");
+
     }
   };
 
@@ -45,6 +61,7 @@ function Signin() {
           type="text"
           name="username"
           placeholder="Username"
+          value={formdata.username}
           onChange={handlechange}
         />
 
@@ -54,6 +71,7 @@ function Signin() {
           type="password"
           name="password"
           placeholder="Password"
+          value={formdata.password}
           onChange={handlechange}
         />
 
