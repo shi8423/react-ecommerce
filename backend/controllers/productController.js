@@ -49,6 +49,11 @@ exports.getProducts = async (req, res) => {
     try {
 
         // take token from headers
+        if (!req.headers.authorization) {
+    return res.json({
+        msg: "Please Login First"
+    });
+}
         let token = req.headers.authorization.split(" ")[1];
         
         let isvalid = jwt.verify(
