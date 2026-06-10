@@ -49,18 +49,17 @@ exports.getProducts = async (req, res) => {
     try {
 
         // take token from headers
-        let token = req.headers.authorization;
-
+        let token = req.headers.authorization.split(" ")[1];
+        
         let isvalid = jwt.verify(
             token,
             process.env.JWT_SECRET
-        );
+);
 
-        if (!isvalid)
-            return res.json({
-                msg: "invalid token"
-            });
-
+if (!isvalid)
+    return res.json({
+msg: "invalid token"
+    });
         // query parameters
         let maxlimit = req.query.limit;
         let shipment = req.query.location;
