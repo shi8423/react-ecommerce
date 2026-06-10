@@ -48,28 +48,28 @@ exports.bulkinsert = async (req, res) => {
 exports.getProducts = async (req, res) => {
     try {
 
-        // take token from headers
         if (!req.headers.authorization) {
-    return res.json({
-        msg: "Please Login First"
-    });
-}
+            return res.json({
+                msg: "Please Login First"
+            });
+        }
+
         let token = req.headers.authorization.split(" ")[1];
-        
+
         let isvalid = jwt.verify(
             token,
             process.env.JWT_SECRET
-);
+        );
 
-if (!isvalid)
-    return res.json({
-msg: "invalid token"
-    });
-        // query parameters
+        if (!isvalid) {
+            return res.json({
+                msg: "invalid token"
+            });
+        }
+
         let maxlimit = req.query.limit;
         let shipment = req.headers.location;
 
-        // location from headers
         let currentlocation = req.headers.location;
 
         let allproducts = await Product.find().limit(maxlimit);
@@ -81,37 +81,11 @@ msg: "invalid token"
         });
 
     } catch (error) {
-
         res.json({
             msg: error.message
         });
-
     }
 };
-
-exports.updateProduct = async (req, res) => {
-    try {
-
-        let productid = req.params.id;
-
-        await Product.findByIdAndUpdate(
-            productid,
-            req.body
-        );
-
-        res.json({
-            msg: "product updated"
-        });
-
-    } catch (error) {
-
-        res.json({
-            msg: error.message
-        });
-
-    }
-};
-
 exports.deleteProduct = async (req, res) => {
     try {
 

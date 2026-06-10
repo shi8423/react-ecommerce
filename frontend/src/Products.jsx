@@ -8,7 +8,13 @@ function Products({ searchquery = "" }) {
 
   useEffect(() => {
 
-  const token = localStorage.getItem("token");
+const token = localStorage.getItem("token");
+
+if (!token) {
+  seterror("Please Login First");
+  setloading(false);
+  return;
+}
   
   fetch("https://backend-v4ql.onrender.com/products", {
     headers: {
