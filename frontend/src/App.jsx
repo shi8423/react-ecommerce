@@ -1,6 +1,6 @@
-import Header from './header'
+import Header from './Header'
 import About from './About'
-import Signup from './Signup'
+import Signup from './signup'
 import Login from './Login'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import Products from './Products'
