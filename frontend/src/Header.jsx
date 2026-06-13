@@ -1,31 +1,36 @@
-  import { Link } from "react-router-dom"
-  import logo from "./assets/vite.svg"
+import { Link } from "react-router-dom";
+import logo from "./assets/vite.svg";
 
-  function Header({ setsearchquery }) {
-    //function which will toggle dark/light mode
-    function togglemode() {
-      document.body.classList.toggle('dark')
-    }
+function Header({ setsearchquery }) {
 
-    return (
-      <>
-        <header>
-          <img src={logo} alt="LOGO" />
-
-          <input onChange={(e)=>setsearchquery(e.target.value)} placeholder="Search products" />
-
-          <nav>
-            <Link to="/">HOME</Link>
-            <Link to="/about">ABOUT</Link>
-            <Link to="/products">PRODUCT</Link>
-            <Link to="/register">SIGNUP</Link>
-            <Link to="/login">SIGNIN</Link>
-          </nav>
-
-          <button onClick={togglemode}>dark/Light</button>
-        </header>
-      </>
-    )
+  function togglemode() {
+    document.body.classList.toggle('dark');
   }
 
-  export default Header
+  return (
+    <>
+      <header>
+        <img src={logo} alt="LOGO" />
+
+        <input
+          onChange={(e) => setsearchquery(e.target.value)}
+          placeholder="Search products"
+        />
+
+        <nav style={{ display: 'flex', gap: '10px' }}>
+          <Link to="/products">HOME</Link>
+          <Link to="/about">ABOUT</Link>
+          <Link to="/products">PRODUCTS</Link>
+          <Link to="/auth/register">Signup</Link>
+          <Link to="/auth/login">Signin</Link>
+        </nav>
+
+        <button onClick={togglemode}>
+          dark/light
+        </button>
+      </header>
+    </>
+  );
+}
+
+export default Header;

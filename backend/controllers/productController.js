@@ -107,3 +107,25 @@ exports.deleteProduct = async (req, res) => {
 
     }
 };
+exports.updateProduct = async (req, res) => {
+    try {
+
+        let productid = req.params.id;
+
+        await Product.findByIdAndUpdate(
+            productid,
+            req.body
+        );
+
+        res.json({
+            msg: "product updated"
+        });
+
+    } catch (error) {
+
+        res.json({
+            msg: error.message
+        });
+
+    }
+};

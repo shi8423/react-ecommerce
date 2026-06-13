@@ -71,13 +71,11 @@ exports.login = async (req, res) => {
 
         const { username, password } = req.body;
 
-        // Check fields
         if (!username || !password)
             return res.json({
                 msg: "missing fields"
             });
 
-        // Find user
         let userdetails = await users.findOne({ username });
 
         if (!userdetails)
@@ -85,7 +83,6 @@ exports.login = async (req, res) => {
                 msg: "invalid credentials"
             });
 
-        // Verify password
         let checkpassword = await bcrypt.compare(
             password,
             userdetails.password
@@ -96,13 +93,26 @@ exports.login = async (req, res) => {
                 msg: "invalid credentials"
             });
 
+        // verify the token
+        let token = req.headers.authorization.split(' ')[1];
+
+        let isverified = await jwt.verify(
+            token,
+            process.env.SECRETKEY
+        );
+
+        if (!isverified)
+            return res.json({
+                msg: "invalid token"
+            });
+
         // Generate token
         let payload = {
             username: userdetails.username,
             role: userdetails.role
         };
 
-        let token = jwt.sign(
+        token = jwt.sign(
             payload,
             secretkey,
             { expiresIn: '30d' }
