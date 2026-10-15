@@ -56,47 +56,56 @@ if(!value) return ""
   }
 
 
-  return (
-    <>
-    <form onSubmit={onsubmit} >
-     <h2>Create your account</h2>
-     <p>Welcome! Please fill in the details to get started.</p>
-     <div>
-        <label >username</label>
-        <input onChange={(e)=>{
-            setusername(e.target.value)
-        }}  type="text"   placeholder="username"   />
-        <p>{validate(usernameschema,username)}</p>
-     </div>
+return (
+  <div className="auth-container">
+    <form className="auth-form" onSubmit={onsubmit}>
+      <h2>Create your account</h2>
+      <p>Welcome! Please fill in the details to get started.</p>
 
-     <div>
-        <label >email</label>
-        <input onChange={(e)=>{
-               setemail(e.target.value)
-        }}     type="email" placeholder="email" />
-        <p>{validate(emailschema,email)}</p>
-     </div>
+      <div>
+        <label>username</label>
+        <input
+          onChange={(e) => setusername(e.target.value)}
+          type="text"
+          placeholder="username"
+        />
+      </div>
 
-     <div>
-         <label>password</label>
-         <input onChange={(e)=>{
-            setpassword(e.target.value)
-         }} type="password" placeholder="password" />
-         <p>{validate(passwordschema,password)}</p>
-     </div>
+      <div>
+        <label>email</label>
+        <input
+          onChange={(e) => setemail(e.target.value)}
+          type="email"
+          placeholder="email"
+        />
+      </div>
 
-     <div>
-       <label>role</label>
-        <input onChange={(e)=>{
-             setrole(e.target.value)
-        }}    type="text" placeholder="role" />
-        <p>{validate(roleschema,role)}</p>
-     </div>
-      <button type="submit" >register</button>
+      <div>
+        <label>password</label>
+        <input
+          onChange={(e) => setpassword(e.target.value)}
+          type="password"
+          placeholder="password"
+        />
+      </div>
+
+      <div>
+        <label>role</label>
+        <input
+          onChange={(e) => setrole(e.target.value)}
+          type="text"
+          placeholder="role"
+        />
+      </div>
+
+      <button type="submit">Register</button>
+
+      <div className="auth-link">
+        Already have an account? <a href="/auth/login">Login</a>
+      </div>
     </form>
-
-    </>
-  )
+  </div>
+)
 }
 
 export default Signup

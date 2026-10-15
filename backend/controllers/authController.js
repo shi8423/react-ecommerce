@@ -98,7 +98,7 @@ exports.login = async (req, res) => {
 
         let isverified = await jwt.verify(
             token,
-            process.env.SECRETKEY
+            process.env.JWT_SECRET
         );
 
         if (!isverified)

@@ -8,7 +8,7 @@ let passwordschema = z.string().min(8,"password must be atleast 8 characters")
 
 
 
-function Login(setisauth) {
+function Login({ setisauth }) {
   //username password
   
   const [username,setusername]=useState('')
@@ -42,6 +42,7 @@ function Login(setisauth) {
         body: JSON.stringify({ username, password })
       })
       let data = await response.json()
+      console.log("LOGIN RESPONSE:", data)
       if (response.ok) {
         localStorage.setItem("token", data.token)
         setisauth(true)
@@ -54,32 +55,40 @@ function Login(setisauth) {
       alert("something went wrong")
     }
   }
-  return (
-   <>
-   <form onSubmit={senddetails}  >
-   <h2>Login</h2>
-   <p>Welcome back!</p>
+ return (
+  <div className="auth-container">
+    <form className="auth-form" onSubmit={senddetails}>
+      <h2>Login</h2>
+      <p>Welcome back!</p>
 
-  <div>
-    <label>Username</label>  <br />
-   <input    onChange={(e)=>{setusername(e.target.value)}}  type="text" placeholder="username" />
-   <p>{validation(usernameschema,username)}</p>
+      <div className="form-group">
+        <label>Username</label>
+        <input
+          onChange={(e) => setusername(e.target.value)}
+          type="text"
+          placeholder="username"
+        />
+        <p>{validation(usernameschema, username)}</p>
+      </div>
+
+      <div className="form-group">
+        <label>Password</label>
+        <input
+          onChange={(e) => setpassword(e.target.value)}
+          type="password"
+          placeholder="password"
+        />
+        <p>{validation(passwordschema, password)}</p>
+      </div>
+
+      <button type="submit">Login</button>
+
+      <div className="auth-link">
+        Don't have an account? <a href="/auth/register">Register</a>
+      </div>
+    </form>
   </div>
-
-  <div>
-  <label>Password</label>  <br />
-   <input    onChange={(e)=>{setpassword(e.target.value)}}   type="password" placeholder="password" />
-   <p>{validation(passwordschema,password)}</p>
-  </div>
-
-  <br />
-   
-   <button type="submit" >Login</button>
-
-  
-   </form>
-   </>
-  )
+)
 }
 
 export default Login
