@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 
 function Card(props) {
@@ -42,9 +43,9 @@ function Card(props) {
         <div className="product-placeholder">{props.title}</div>
       )}
 
-      <h2>title: {props.title}</h2>
+      <h2>{props.title}</h2>
 
-      <h3>price: {props.price}</h3>
+      <h3>${props.price}</h3>
     </div>
   );
 }
