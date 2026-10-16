@@ -94,28 +94,17 @@ exports.login = async (req, res) => {
             });
 
         // verify the token
-        let token = req.headers.authorization.split(' ')[1];
-
-        let isverified = await jwt.verify(
-            token,
-            process.env.JWT_SECRET
-        );
-
-        if (!isverified)
-            return res.json({
-                msg: "invalid token"
-            });
 
         // Generate token
         let payload = {
             username: userdetails.username,
             role: userdetails.role
         };
-
-        token = jwt.sign(
+        
+        let token = jwt.sign(
             payload,
             secretkey,
-            { expiresIn: '30d' }
+            { expiresIn: '1hr' }
         );
 
         res.json({
