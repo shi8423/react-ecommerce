@@ -10,7 +10,7 @@ import "./Login.css"
 
 function ProtectedRoute({children}){
  const token=localStorage.getItem('token')
- if(!token) return <Navigate to='auth/login' replace  />
+if (!token) return <Navigate to="/auth/login" replace />
  return children
 }
 
@@ -23,7 +23,12 @@ function App() {
 
   return (
     <>
-    {isauth&&<Header setsearchquery={setsearchquery} />}
+    {isauth && (
+  <Header
+    setsearchquery={setsearchquery}
+    setisauth={setisauth}
+  />
+)}
       
       <Routes>
         <Route path='/' element={<Login setisauth={setisauth} />} />

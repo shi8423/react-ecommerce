@@ -1,10 +1,18 @@
-import { Link } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
 import logo from "./assets/vite.svg";
 
-function Header({ setsearchquery }) {
+function Header({ setsearchquery, setisauth }) {
+  const navigate = useNavigate();
 
   function togglemode() {
-    document.body.classList.toggle('dark');
+    document.body.classList.toggle("dark");
+  }
+
+  function handleLogout() {
+    localStorage.removeItem("token");
+    setisauth(false);
+    navigate("/auth/login", { replace: true });
   }
 
   return (
@@ -17,17 +25,14 @@ function Header({ setsearchquery }) {
           placeholder="Search products"
         />
 
-        <nav style={{ display: 'flex', gap: '10px' }}>
+        <nav style={{ display: "flex", gap: "10px" }}>
           <Link to="/products">HOME</Link>
           <Link to="/about">ABOUT</Link>
           <Link to="/products">PRODUCTS</Link>
-          <Link to="/auth/register">Signup</Link>
-          <Link to="/auth/login">Signin</Link>
+          <button onClick={handleLogout}>Logout</button>
         </nav>
 
-        <button onClick={togglemode}>
-          dark/light
-        </button>
+        <button onClick={togglemode}>dark/light</button>
       </header>
     </>
   );
