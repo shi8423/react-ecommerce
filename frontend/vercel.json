@@ -1,13 +1,12 @@
-
 {
-  "routes": [
+  "rewrites": [
     {
-      "src": "^/googlef6b8a78090fc803a\\.html$",
-      "dest": "/googlef6b8a78090fc803a.html"
+      "source": "/googlef6b8a78090fc803a.html",
+      "destination": "/googlef6b8a78090fc803a.html"
     },
     {
-      "src": "^/(.*)$",
-      "dest": "/"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
